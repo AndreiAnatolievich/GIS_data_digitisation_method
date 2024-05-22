@@ -7,4 +7,4 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 root = Tk() # open the dialog box
-
+root.withdraw() # first hide the root window
