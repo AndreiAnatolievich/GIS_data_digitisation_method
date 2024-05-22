@@ -71,4 +71,31 @@ ax.plot(data[:,0],data[:,1],'g','linewidth',1.5)
 plt.draw()
 
 # convert the curve points from pixels to coordinates
+xPiForPo=xfactor[0]
+xdata=xfactor[1]
+xcoord=xfactor[2]
+data[:,0] = xdata + (data[:,0]-xcoord[0][0])/xPiForPo
+yPiForPo=yfactor[0]
+ydata=yfactor[1]
+ycoord=yfactor[2]
+data[:,1] = ydata + (data[:,1]-ycoord[0][1])/yPiForPo
+
+# write the data to a file
+# first get the filename
+validFile = False
+while not validFile:
+    fileout = filedialog.asksaveasfilename(
+    title = "Select file to save the data",
+    filetypes = [ ("Simple text files (.txt)", "*.txt") ],
+    defaultextension = 'txt'
+    )
+    if len(fileout) == 0:
+        # nothing selected, pop up message to retry
+        messagebox.showinfo("Filename error", "Please select a filename to save the data.")
+    else:
+        validFile = True
+# write the data to file
+savetxt(fileout, data, delimiter='\t')
+plt.clf() # clear the figure
+
 
