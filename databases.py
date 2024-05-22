@@ -39,3 +39,18 @@ def getReferenceLength(index):
             validLength = True
         else:
             messagebox.showerror("Error","Please provide a valid MIN.")
+            messagebox.showinfo("Select the END of {:s} direction".format(direction),
+
+"Click the END of {:s}.".format(direction))
+coord2 = plt.ginput(1,timeout=0,show_clicks=True)
+data2 = simpledialog.askfloat("Enter MAX","Enter the MAXIMUM in {:s} direction".format(direction))
+if isinstance(data2, float):
+    validLength = True
+else:
+    messagebox.showerror("Error","Please provide a valid MAX.")
+
+# factor=data1 data2 coord1 coord2# то, что нужно для расчётов и то, что функция возвращает
+reply = messagebox.askyesno("Information",
+You selected from {:4.4f} to {:4.4f} in {:s}. Is this correct?".format(data1,data2,direction)
+)
+PiForPo=(coord2[0][index]-coord1[0][index])/(data2-data1)
